@@ -1,17 +1,14 @@
-<%- include( "partials/head", { title: 'Workshops List' } ) -%>
+<%- include( "partials/head", { title: 'Workshops' } ) -%>
 <h1>List of workshops</h1>
 <hr />
 <div>
-    <% if( workshops.length === 0 ) { %>
-        <p>No workshops to show</p>
-    <% } %>
-    <ul>
-        <% workshops.forEach(workshop => { %>
-            <li><%= workshop.name %></li>
-        <% }); %>
-    </ul>
+  <% if( workshops.length === 0 ) { %>
+  <p>No workshops to show</p>
+  <% } %>
+  <ul>
+    <% workshops.forEach(workshop => { %>
+    <li><%= workshop.name %></li>
+    <% }); %>
+  </ul>
 </div>
-
-<!-- include a partials/footer -->
-    </body>
-</html>
+<%- include( "partials/foot" ) -%>

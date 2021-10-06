@@ -12,10 +12,12 @@ const app = express();
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
-// middleware 1 - log request and response and total time for processing
+// log request and response and total time for processing
 app.use(logger);
 
-// built-in Express middleware (midlleware 3, 4)
+app.use(express.static(path.join(__dirname, 'public')));
+
+// built-in Express middleware
 // Set up form data on req.body
 app.use(express.urlencoded({ extended: false }));
 
@@ -23,7 +25,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 // set up index router to take care of routing to home page
-// middleware 4, 5
 app.use(indexRouter);
 app.use(workshopsRouter);
 app.use(workshopsPageRouter);
