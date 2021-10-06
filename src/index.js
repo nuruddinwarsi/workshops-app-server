@@ -1,16 +1,32 @@
 const express = require('express');
+const path = require('path');
 const logger = require('./middleware/logger');
 const indexRouter = require('./routes/index');
+const workshopsRouter = require('./routes/workshops');
+const workshopsPageRouter = require('./routes/pages/workshops');
 
 // This creates an Express application object - this includes an HTTP server
 const app = express();
 
-// middleware 1
+// configure to use EJS for templating
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
+
+// middleware 1 - log request and response and total time for processing
 app.use(logger);
 
+// built-in Express middleware (midlleware 3, 4)
+// Set up form data on req.body
+app.use(express.urlencoded({ extended: false }));
+
+// Set up JSON data sent using Ajax request on req.body
+app.use(express.json());
+
 // set up index router to take care of routing to home page
-// middleware 2
+// middleware 4, 5
 app.use(indexRouter);
+app.use(workshopsRouter);
+app.use(workshopsPageRouter);
 
 // NODE_ENV is an environment variable generally setup to indicate which environment you are working on
 // NODE_ENV=development
