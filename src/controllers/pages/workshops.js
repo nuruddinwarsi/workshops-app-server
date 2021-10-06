@@ -1,7 +1,10 @@
 const workshops = require('../../data/workshops.json');
 
 const getWorkshops = (req, res, next) => {
-  res.render('workshops');
+  res.render('workshops', {
+    // workshops: workshops
+    workshops,
+  });
 };
 
 module.exports = {

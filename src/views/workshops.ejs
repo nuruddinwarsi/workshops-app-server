@@ -11,8 +11,9 @@
     <hr />
     <div>
       <ul>
-        <li>Workshop 1</li>
-        <li>Workshop 2</li>
+        <% workshops.forEach(workshop => { %>
+        <li><%= workshop.name %></li>
+        <% }); %>
       </ul>
     </div>
   </body>
