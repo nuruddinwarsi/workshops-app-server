@@ -3,6 +3,7 @@ const path = require('path');
 const logger = require('./middleware/logger');
 const indexRouter = require('./routes/index');
 const workshopsRouter = require('./routes/workshops');
+const indexPageRouter = require('./routes/pages/index');
 const workshopsPageRouter = require('./routes/pages/workshops');
 
 // This creates an Express application object - this includes an HTTP server
@@ -24,9 +25,12 @@ app.use(express.urlencoded({ extended: false }));
 // Set up JSON data sent using Ajax request on req.body
 app.use(express.json());
 
-// set up index router to take care of routing to home page
+// api routers
 app.use(indexRouter);
 app.use(workshopsRouter);
+
+// page routers
+app.use(indexPageRouter);
 app.use(workshopsPageRouter);
 
 // NODE_ENV is an environment variable generally setup to indicate which environment you are working on

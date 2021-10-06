@@ -1,8 +1,8 @@
 const express = require('express');
-const { postMessage } = require('../controllers/index');
+const { home } = require('../../controllers/pages/index');
 
 const router = express.Router();
 
-router.post('/', postMessage);
+router.get('/pages', home);
 
 module.exports = router;

@@ -9,6 +9,14 @@ const getWorkshops = (req, res, next) => {
   res.json(workshops);
 };
 
+const getWorkshopById = (req, res, next) => {
+  let { id } = req.params;
+  id = parseInt(id);
+
+  res.json(workshops.find((workshop) => id === workshop.id));
+};
+
 module.exports = {
   getWorkshops,
+  getWorkshopById,
 };

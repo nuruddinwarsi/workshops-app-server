@@ -3,6 +3,7 @@ const logger = (req, res, next) => {
   const receivedDate = new Date();
   console.log('request has been received at ' + receivedDate.toTimeString());
 
+  // transfer control to the next middleware
   next();
 
   // this code executes AFTER response is sent
